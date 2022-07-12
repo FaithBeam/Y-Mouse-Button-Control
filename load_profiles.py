@@ -34,7 +34,9 @@ def get_layer(layer: dict):
             right_mouse_button=get_mapping(layer['rightButton']),
             middle_mouse_button=get_mapping(layer['middleButton']),
             mouse_button_4=get_mapping(layer['mouseButton4']),
-            mouse_button_5=get_mapping(layer['mouseButton5'])
+            mouse_button_5=get_mapping(layer['mouseButton5']),
+            scroll_up=get_mapping(layer['scrollUp']),
+            scroll_down=get_mapping(layer['scrollDown'])
         )
     else:
         return Layer()

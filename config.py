@@ -33,7 +33,9 @@ class Config:
             "rightButton": null,
             "middleButton": null,
             "mouseButton4": null,
-            "mouseButton5": null
+            "mouseButton5": null,
+            "scrollUp": null,
+            "scrollDown": null
         },
         "layer2": {
             "layerName": null,
@@ -41,7 +43,9 @@ class Config:
             "rightButton": null,
             "middleButton": null,
             "mouseButton4": null,
-            "mouseButton5": null
+            "mouseButton5": null,
+            "scrollUp": null,
+            "scrollDown": null
         },
         "description": "Default",
         "windowCaption": "N/A",

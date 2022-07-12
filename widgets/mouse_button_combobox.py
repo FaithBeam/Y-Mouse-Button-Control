@@ -1,5 +1,7 @@
+import threading
+from time import sleep
 from typing import Optional, Tuple
-from PySide6.QtCore import Slot, Qt
+from PySide6.QtCore import Slot, Qt, QObject, Signal, QTimer
 from PySide6.QtWidgets import QComboBox
 from models.mapping_commands import MappingInterface
 from models.action_combobox_model import ActionComboBoxModel
@@ -14,6 +16,8 @@ class MouseButtonComboBox(QComboBox):
         self.setMinimumWidth(300)
         if action_interface is not None:
             self.setCurrentIndex(action_interface.index)
+        if 'scroll' in button:
+            self._scroll_timer = QTimer(self)
 
     def get_action(self, index: int) -> MappingInterface:
         return self.model.data(self.model.index(index), ActionComboBoxModel.ReturnActionRole)
@@ -42,3 +46,12 @@ class MouseButtonComboBox(QComboBox):
             self.setStyleSheet("background-color: yellow")
         else:
             self.setStyleSheet("background-color: white")
+
+    @Slot(bool)
+    def scroll_highlight(self, value: bool):
+        if not self._scroll_timer.isActive():
+            self.setStyleSheet("background-color: yellow")
+            self._scroll_timer.singleShot(200, self._unhighlight)
+
+    def _unhighlight(self):
+        self.setStyleSheet("background-color: white")
