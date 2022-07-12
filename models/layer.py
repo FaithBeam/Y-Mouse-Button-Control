@@ -11,6 +11,8 @@ class Layer(QObject):
     on_middle_mouse_button_changed = Signal(object)
     on_mouse_button_4_changed = Signal(object)
     on_mouse_button_5_changed = Signal(object)
+    on_scroll_up_changed = Signal(object)
+    on_scroll_down_changed = Signal(object)
 
     def to_json(self):
         return {
@@ -19,7 +21,9 @@ class Layer(QObject):
             "rightButton": self.right_mouse_button.to_json() if self.right_mouse_button else None,
             "middleButton": self.middle_mouse_button.to_json() if self.middle_mouse_button else None,
             "mouseButton4": self.mouse_button_4.to_json() if self.mouse_button_4 else None,
-            "mouseButton5": self.mouse_button_5.to_json() if self.mouse_button_5 else None
+            "mouseButton5": self.mouse_button_5.to_json() if self.mouse_button_5 else None,
+            "scrollUp": self.scroll_up.to_json() if self.scroll_up else None,
+            "scrollDown": self.scroll_down.to_json() if self.scroll_down else None,
         }
 
     @property
@@ -71,6 +75,24 @@ class Layer(QObject):
         self._mouse_button_5 = value
         self.on_mouse_button_5_changed.emit(value)
 
+    @property
+    def scroll_up(self):
+        return self._scroll_up
+
+    @scroll_up.setter
+    def scroll_up(self, value: MappingInterface):
+        self._scroll_up = value
+        self.on_scroll_up_changed.emit(value)
+
+    @property
+    def scroll_down(self):
+        return self._scroll_down
+
+    @scroll_down.setter
+    def scroll_down(self, value: MappingInterface):
+        self._scroll_down = value
+        self.on_scroll_down_changed.emit(value)
+
     def __init__(
             self,
             name: Optional[str] = None,
@@ -78,7 +100,9 @@ class Layer(QObject):
             right_mouse_button: Optional[MappingInterface] = NothingMapping(),
             middle_mouse_button: Optional[MappingInterface] = NothingMapping(),
             mouse_button_4: Optional[MappingInterface] = NothingMapping(),
-            mouse_button_5: Optional[MappingInterface] = NothingMapping()
+            mouse_button_5: Optional[MappingInterface] = NothingMapping(),
+            scroll_up: Optional[MappingInterface] = NothingMapping(),
+            scroll_down: Optional[MappingInterface] = NothingMapping()
     ):
         super().__init__()
         self._name = name
@@ -87,6 +111,8 @@ class Layer(QObject):
         self._middle_mouse_button = middle_mouse_button
         self._mouse_button_4 = mouse_button_4
         self._mouse_button_5 = mouse_button_5
+        self._scroll_up = scroll_up
+        self._scroll_down = scroll_down
 
     def do_click(self, pressed: bool, button: str):
         match button:
@@ -105,3 +131,9 @@ class Layer(QObject):
             case "mb5":
                 if self._mouse_button_5 is not None and not isinstance(self._mouse_button_5, NothingMapping):
                     self._mouse_button_5.run(pressed)
+            case "scroll_up":
+                if self._scroll_up is not None and not isinstance(self._scroll_up, NothingMapping):
+                    self._scroll_up.run(pressed)
+            case "scroll_down":
+                if self._scroll_down is not None and not isinstance(self._scroll_down, NothingMapping):
+                    self._scroll_down.run(pressed)
