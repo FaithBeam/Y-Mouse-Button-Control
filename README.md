@@ -4,7 +4,7 @@
 
 This is an attempt to clone the excellent [X-Mouse Button Control](https://www.highrez.co.uk/downloads/xmousebuttoncontrol.htm) for Linux/Windows/Mac.
 
-![](https://i.imgur.com/4PeiT2q.png)
+![](https://i.imgur.com/3522t4u.png)
 
 ## Requirements
 
