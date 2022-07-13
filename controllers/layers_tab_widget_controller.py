@@ -39,6 +39,10 @@ class LayersTabWidgetController:
                 self._profiles.current_profile.layer_1.mouse_button_4 = base_action
             case 'mb5':
                 self._profiles.current_profile.layer_1.mouse_button_5 = base_action
+            case 'scrollUp':
+                self._profiles.current_profile.layer_1.scroll_up = base_action
+            case 'scrollDown':
+                self._profiles.current_profile.layer_1.scroll_down = base_action
         self._profiles.current_profile.trigger()
         self._profiles.current_profile_edited()
         combo.update_action(base_action)
