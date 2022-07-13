@@ -13,6 +13,8 @@ class Layer(QObject):
     on_mouse_button_5_changed = Signal(object)
     on_scroll_up_changed = Signal(object)
     on_scroll_down_changed = Signal(object)
+    on_tilt_wheel_left_changed = Signal(object)
+    on_tilt_wheel_right_changed = Signal(object)
 
     def to_json(self):
         return {
@@ -24,6 +26,8 @@ class Layer(QObject):
             "mouseButton5": self.mouse_button_5.to_json() if self.mouse_button_5 else None,
             "scrollUp": self.scroll_up.to_json() if self.scroll_up else None,
             "scrollDown": self.scroll_down.to_json() if self.scroll_down else None,
+            "tiltWheelLeft": self.tilt_wheel_left.to_json() if self.tilt_wheel_left else None,
+            "tiltWheelRight": self.tilt_wheel_right.to_json() if self.tilt_wheel_right else None,
         }
 
     @property
@@ -93,6 +97,24 @@ class Layer(QObject):
         self._scroll_down = value
         self.on_scroll_down_changed.emit(value)
 
+    @property
+    def tilt_wheel_left(self):
+        return self._tilt_wheel_left
+
+    @tilt_wheel_left.setter
+    def tilt_wheel_left(self, value: MappingInterface):
+        self._tilt_wheel_left = value
+        self.on_tilt_wheel_left_changed.emit(value)
+
+    @property
+    def tilt_wheel_right(self):
+        return self._tilt_wheel_right
+
+    @tilt_wheel_right.setter
+    def tilt_wheel_right(self, value: MappingInterface):
+        self._tilt_wheel_right = value
+        self.on_tilt_wheel_right_changed.emit(value)
+
     def __init__(
             self,
             name: Optional[str] = None,
@@ -102,7 +124,9 @@ class Layer(QObject):
             mouse_button_4: Optional[MappingInterface] = NothingMapping(),
             mouse_button_5: Optional[MappingInterface] = NothingMapping(),
             scroll_up: Optional[MappingInterface] = NothingMapping(),
-            scroll_down: Optional[MappingInterface] = NothingMapping()
+            scroll_down: Optional[MappingInterface] = NothingMapping(),
+            tilt_wheel_left: Optional[MappingInterface] = NothingMapping(),
+            tilt_wheel_right: Optional[MappingInterface] = NothingMapping(),
     ):
         super().__init__()
         self._name = name
@@ -113,6 +137,8 @@ class Layer(QObject):
         self._mouse_button_5 = mouse_button_5
         self._scroll_up = scroll_up
         self._scroll_down = scroll_down
+        self._tilt_wheel_left = tilt_wheel_left
+        self._tilt_wheel_right = tilt_wheel_right
 
     def do_click(self, pressed: bool, button: str):
         match button:
@@ -137,3 +163,9 @@ class Layer(QObject):
             case "scroll_down":
                 if self._scroll_down is not None and not isinstance(self._scroll_down, NothingMapping):
                     self._scroll_down.run(pressed)
+            case "tilt_left":
+                if self._tilt_wheel_left is not None and not isinstance(self._tilt_wheel_left, NothingMapping):
+                    self._tilt_wheel_left.run(pressed)
+            case "tilt_right":
+                if self._tilt_wheel_right is not None and not isinstance(self._tilt_wheel_right, NothingMapping):
+                    self._tilt_wheel_right.run(pressed)

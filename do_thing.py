@@ -15,6 +15,8 @@ class DoThing:
         self._mouse_handler.on_mb5_click.connect(lambda pressed: self._should_press(pressed, 'mb5'))
         self._mouse_handler.on_scroll_up.connect(lambda pressed: self._should_press(pressed, 'scroll_up'))
         self._mouse_handler.on_scroll_down.connect(lambda pressed: self._should_press(pressed, 'scroll_down'))
+        self._mouse_handler.on_tilt_wheel_left.connect(lambda pressed: self._should_press(pressed, "tilt_left"))
+        self._mouse_handler.on_tilt_wheel_right.connect(lambda pressed: self._should_press(pressed, "tilt_right"))
 
     def _should_press(self, pressed: bool, button: str):
         for p in self._profiles.profiles:

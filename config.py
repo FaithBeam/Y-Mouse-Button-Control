@@ -35,7 +35,9 @@ class Config:
             "mouseButton4": null,
             "mouseButton5": null,
             "scrollUp": null,
-            "scrollDown": null
+            "scrollDown": null,
+            "tiltWheelLeft": null,
+            "tiltWheelRight": null
         },
         "layer2": {
             "layerName": null,
@@ -45,7 +47,9 @@ class Config:
             "mouseButton4": null,
             "mouseButton5": null,
             "scrollUp": null,
-            "scrollDown": null
+            "scrollDown": null,
+            "tiltWheelLeft": null,
+            "tiltWheelRight": null
         },
         "description": "Default",
         "windowCaption": "N/A",

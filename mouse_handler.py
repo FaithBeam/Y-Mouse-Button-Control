@@ -10,6 +10,8 @@ class MouseHandler(QObject):
     on_mb5_click = Signal(bool)
     on_scroll_up = Signal(bool)
     on_scroll_down = Signal(bool)
+    on_tilt_wheel_left = Signal(bool)
+    on_tilt_wheel_right = Signal(bool)
 
     def __init__(self):
         super().__init__()
@@ -29,7 +31,14 @@ class MouseHandler(QObject):
             self.on_mb5_click.emit(pressed)
 
     def _on_scroll(self, x, y, dx, dy):
-        if dy < 0:
-            self.on_scroll_down.emit(True)
-        else:
-            self.on_scroll_up.emit(True)
+        match dy:
+            case 1:
+                self.on_scroll_up.emit(True)
+            case -1:
+                self.on_scroll_down.emit(True)
+        match dx:
+            case 1:
+                self.on_tilt_wheel_left.emit(True)
+            case -1:
+                self.on_tilt_wheel_right.emit(True)
+

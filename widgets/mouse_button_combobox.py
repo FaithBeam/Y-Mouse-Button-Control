@@ -14,7 +14,7 @@ class MouseButtonComboBox(QComboBox):
         self.setMinimumWidth(300)
         if action_interface is not None:
             self.setCurrentIndex(action_interface.index)
-        if 'scroll' in button:
+        if 'scroll' in button or 'tilt' in button:
             self._scroll_timer = QTimer(self)
 
     def get_action(self, index: int) -> MappingInterface:
