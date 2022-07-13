@@ -43,6 +43,10 @@ class LayersTabWidgetController:
                 self._profiles.current_profile.layer_1.scroll_up = base_action
             case 'scrollDown':
                 self._profiles.current_profile.layer_1.scroll_down = base_action
+            case 'tiltWheelLeft':
+                self._profiles.current_profile.layer_1.tilt_wheel_left = base_action
+            case 'tiltWheelRight':
+                self._profiles.current_profile.layer_1.tilt_wheel_right = base_action
         self._profiles.current_profile.trigger()
         self._profiles.current_profile_edited()
         combo.update_action(base_action)
