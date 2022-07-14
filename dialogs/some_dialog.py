@@ -4,6 +4,38 @@ from PySide6.QtWidgets import QDialog, QDialogButtonBox, QLabel, QLineEdit, QVBo
     QToolButton, QMenu
 from models.action_type import ActionTypeFactory
 
+key_table = {
+    '&Alt': '{ALT}',
+    '&Apps (Context Menu) key': '{APPS}',
+    '&Backspace': '{BACKSPACE}',
+    '&Break': '{BREAK}',
+    '&CAPS Lock Toggle': '{CAPSLOCK}',
+    '&Caps Lock Off': '{CAPSLOCKOFF}',
+    '&Caps Lock On': '{CAPSLOCKON}',
+    '&Control': '{CTRL}',
+    '&Delete': '{DEL}',
+    '&End': '{END}',
+    '&Escape': '{ESC}',
+    '&Home': '{HOME}',
+    '&Insert': '{INS}',
+    '&Page Down': '{PGDN}',
+    '&Page Up': '{PGUP}',
+    '&Pause': '{PAUSE}',
+    '&PrtScn': '{PRTSCN}',
+    '&Return': '{RETURN}',
+    '&Right Alt (Alt Gr)': '{RALT}',
+    '&Right Control': '{RCTRL}',
+    '&Right Shift': '{RSHIFT}',
+    '&Right Windows Key': '{RWIN}',
+    '&Scroll Lock Off': '{SCROLLLOCKOFF}',
+    '&Scroll Lock On': '{SCROLLLOCKON}',
+    '&Scroll Lock Toggle': '{SCROLLLOCK}',
+    '&Shift': '{SHIFT}',
+    '&Space': '{SPACE}',
+    '&Tab': '{TAB}',
+    '&Windows Key': '{WIN}',
+}
+
 
 class SomeDialog:
     subclasses = {}
@@ -67,7 +99,7 @@ class ModifierToolButton(QToolButton):
         self.setIcon(QIcon(r'resources\curly-braces-icon.png'))
         self.setPopupMode(QToolButton.InstantPopup)
         self._create_modifier_keys_menu()
-        # self._create_standard_keys_menu()
+        self._create_standard_keys_menu()
 
     def _create_modifier_keys_menu(self):
         mk_control_action = QAction("&Control", self)
@@ -192,71 +224,7 @@ class ModifierToolButton(QToolButton):
 
     @Slot(object)
     def on_action_triggered(self, action_text: str):
-        text = ''
-        match action_text:
-            # region Modifier Keys
-            case '&Control':
-                text = '{CTRL}'
-            case '&Right Control':
-                text = '{RCTRL}'
-            case '&Alt':
-                text = '{ALT}'
-            case '&Right Alt (Alt Gr)':
-                text = '{RALT}'
-            case '&Shift':
-                text = '{SHIFT}'
-            case '&Right Shift':
-                text = '{RSHIFT}'
-            case '&Windows Key':
-                text = '{WIN}'
-            case '&Right Windows Key':
-                text = '{RWIN}'
-            case '&Apps (Context Menu) key':
-                text = '{APPS}'
-            # endregion
-            # region Standard Keys
-            case '&Escape':
-                text = '{ESC}'
-            case '&Space':
-                text = '{SPACE}'
-            case '&Return':
-                text = '{RETURN}'
-            case '&Tab':
-                text = '{TAB}'
-            case '&Backspace':
-                text = '{BACKSPACE}'
-            case '&Delete':
-                text = '{DEL}'
-            case '&Insert':
-                text = '{INS}'
-            case '&Home':
-                text = '{HOME}'
-            case '&End':
-                text = '{END}'
-            case '&Page Up':
-                text = '{PGUP}'
-            case '&Page Down':
-                text = '{PGDN}'
-            case '&PrtScn':
-                text = '{PRTSCN}'
-            case '&Pause':
-                text = '{PAUSE}'
-            case '&Break':
-                text = '{BREAK}'
-            case '&CAPS Lock Toggle':
-                text = '{CAPSLOCK}'
-            case '&Caps Lock On':
-                text = '{CAPSLOCKON}'
-            case '&Caps Lock Off':
-                text = '{CAPSLOCKOFF}'
-            case '&Scroll Lock Toggle':
-                text = '{SCROLLLOCK}'
-            case '&Scroll Lock On':
-                text = '{SCROLLLOCKON}'
-            case '&Scroll Lock Off':
-                text = '{SCROLLLOCKOFF}'
-            # endregion
-
+        text = key_table.get(action_text)
         if text:
             new_line_text = self._line_edit.text() + text
             self._line_edit.setText(new_line_text)

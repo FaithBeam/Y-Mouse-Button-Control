@@ -1,6 +1,4 @@
 from typing import Union, Any
-
-from PySide6 import QtCore
 from PySide6.QtCore import QAbstractListModel, QModelIndex, Qt, QPersistentModelIndex
 
 from models.mapping_commands import MappingFactory

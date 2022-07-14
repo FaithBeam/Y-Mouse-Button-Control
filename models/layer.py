@@ -141,31 +141,25 @@ class Layer(QObject):
         self._tilt_wheel_right = tilt_wheel_right
 
     def do_click(self, pressed: bool, button: str):
-        match button:
-            case "lmb":
-                if self._left_mouse_button is not None and not isinstance(self._left_mouse_button, NothingMapping):
-                    self._left_mouse_button.run(pressed)
-            case "rmb":
-                if self._right_mouse_button is not None and not isinstance(self._right_mouse_button, NothingMapping):
-                    self._right_mouse_button.run(pressed)
-            case "mmb":
-                if self._middle_mouse_button is not None and not isinstance(self._middle_mouse_button, NothingMapping):
-                    self._middle_mouse_button.run(pressed)
-            case "mb4":
-                if self._mouse_button_4 is not None and not isinstance(self._mouse_button_4, NothingMapping):
-                    self._mouse_button_4.run(pressed)
-            case "mb5":
-                if self._mouse_button_5 is not None and not isinstance(self._mouse_button_5, NothingMapping):
-                    self._mouse_button_5.run(pressed)
-            case "scroll_up":
-                if self._scroll_up is not None and not isinstance(self._scroll_up, NothingMapping):
-                    self._scroll_up.run(pressed)
-            case "scroll_down":
-                if self._scroll_down is not None and not isinstance(self._scroll_down, NothingMapping):
-                    self._scroll_down.run(pressed)
-            case "tilt_left":
-                if self._tilt_wheel_left is not None and not isinstance(self._tilt_wheel_left, NothingMapping):
-                    self._tilt_wheel_left.run(pressed)
-            case "tilt_right":
-                if self._tilt_wheel_right is not None and not isinstance(self._tilt_wheel_right, NothingMapping):
-                    self._tilt_wheel_right.run(pressed)
+        if button == 'lmb':
+            self._try_run(pressed, self._left_mouse_button)
+        elif button == 'rmb':
+            self._try_run(pressed, self._right_mouse_button)
+        elif button == 'mmb':
+            self._try_run(pressed, self._middle_mouse_button)
+        elif button == 'mb4':
+            self._try_run(pressed, self._mouse_button_4)
+        elif button == 'mb5':
+            self._try_run(pressed, self._mouse_button_5)
+        elif button == 'scroll_up':
+            self._try_run(pressed, self._scroll_up)
+        elif button == 'scroll_down':
+            self._try_run(pressed, self._scroll_down)
+        elif button == 'tilt_left':
+            self._try_run(pressed, self._tilt_wheel_left)
+        elif button == 'tilt_right':
+            self._try_run(pressed, self._tilt_wheel_right)
+
+    def _try_run(self, pressed, mapping):
+        if mapping is not None and not isinstance(mapping, NothingMapping):
+            mapping.run(pressed)

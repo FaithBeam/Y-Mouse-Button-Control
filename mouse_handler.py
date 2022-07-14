@@ -31,14 +31,11 @@ class MouseHandler(QObject):
             self.on_mb5_click.emit(pressed)
 
     def _on_scroll(self, x, y, dx, dy):
-        match dy:
-            case 1:
-                self.on_scroll_up.emit(True)
-            case -1:
-                self.on_scroll_down.emit(True)
-        match dx:
-            case 1:
-                self.on_tilt_wheel_left.emit(True)
-            case -1:
-                self.on_tilt_wheel_right.emit(True)
-
+        if dy == 1:
+            self.on_scroll_up.emit(True)
+        elif dy == -1:
+            self.on_scroll_down.emit(True)
+        elif dx == 1:
+            self.on_tilt_wheel_left.emit(True)
+        elif dx == -1:
+            self.on_tilt_wheel_right.emit(True)

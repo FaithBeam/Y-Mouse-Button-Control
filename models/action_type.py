@@ -278,18 +278,38 @@ class StickyHoldActionType(ActionTypeInterface):
             self._state = False
 
 
+modifier_table = {
+    'ALT': Key.alt,
+    'APPS': Key.menu,
+    'BACKSPACE': Key.backspace,
+    'BREAK': Key.pause,
+    'CAPSLOCK': Key.caps_lock,
+    'CTRL': Key.ctrl,
+    'DEL': Key.delete,
+    'END': Key.end,
+    'ESC': Key.esc,
+    'HOME': Key.home,
+    'INS': Key.insert,
+    'PGDN': Key.page_down,
+    'PGUP': Key.page_up,
+    'PAUSE': Key.pause,
+    'PRTSCN': Key.print_screen,
+    'RETURN': Key.enter,
+    'RALT': Key.alt_r,
+    'RCTRL': Key.ctrl_r,
+    'RMB': Button.right,
+    'RSHIFT': Key.shift_r,
+    'RWIN': Key.cmd_r,
+    'SCROLLLOCK': Key.scroll_lock,
+    'SHIFT': Key.shift,
+    'SPACE': Key.space,
+    'TAB': Key.tab,
+    'WIN': Key.cmd,
+}
+
+
 def get_modifier(key):
-    match key:
-        case 'SHIFT':
-            return Key.shift
-        case 'CTRL':
-            return Key.ctrl
-        case 'ALT':
-            return Key.alt
-        case 'CMD':
-            return Key.cmd
-        case 'RMB':
-            return Button.right
+    return modifier_table.get(key)
 
 
 def parse_string(my_str: str) -> list:

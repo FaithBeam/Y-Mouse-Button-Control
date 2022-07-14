@@ -32,7 +32,7 @@ class LayersTabWidget(QWidget):
         tilt_wheel_left_qlabel = QLabel("Tilt Wheel Left")
         tilt_wheel_right_qlabel = QLabel("Tilt Wheel Right")
 
-        self.layer_name_qlabel_value = QLabel("")
+        self.layer_name_qlabel_value = QLabel(self._profile.layer_1.name)
         self.left_button_combo = MouseButtonComboBox('lmb', self._profile.layer_1.left_mouse_button)
         self.right_button_combo = MouseButtonComboBox('rmb', self._profile.layer_1.right_mouse_button)
         self.middle_button_combo = MouseButtonComboBox('mmb', self._profile.layer_1.middle_mouse_button)

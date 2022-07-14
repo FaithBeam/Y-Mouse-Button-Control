@@ -28,25 +28,24 @@ class LayersTabWidgetController:
                 self.set_button(mapping, combo)
 
     def set_button(self, base_action: MappingInterface, combo: MouseButtonComboBox):
-        match combo.button:
-            case 'lmb':
-                self._profiles.current_profile.layer_1.left_mouse_button = base_action
-            case 'rmb':
-                self._profiles.current_profile.layer_1.right_mouse_button = base_action
-            case 'mmb':
-                self._profiles.current_profile.layer_1.middle_mouse_button = base_action
-            case 'mb4':
-                self._profiles.current_profile.layer_1.mouse_button_4 = base_action
-            case 'mb5':
-                self._profiles.current_profile.layer_1.mouse_button_5 = base_action
-            case 'scrollUp':
-                self._profiles.current_profile.layer_1.scroll_up = base_action
-            case 'scrollDown':
-                self._profiles.current_profile.layer_1.scroll_down = base_action
-            case 'tiltWheelLeft':
-                self._profiles.current_profile.layer_1.tilt_wheel_left = base_action
-            case 'tiltWheelRight':
-                self._profiles.current_profile.layer_1.tilt_wheel_right = base_action
+        if combo.button == 'lmb':
+            self._profiles.current_profile.layer_1.left_mouse_button = base_action
+        elif combo.button == 'rmb':
+            self._profiles.current_profile.layer_1.right_mouse_button = base_action
+        elif combo.button == 'mmb':
+            self._profiles.current_profile.layer_1.middle_mouse_button = base_action
+        elif combo.button == 'mb4':
+            self._profiles.current_profile.layer_1.mouse_button_4 = base_action
+        elif combo.button == 'mb5':
+            self._profiles.current_profile.layer_1.mouse_button_5 = base_action
+        elif combo.button == 'scrollUp':
+            self._profiles.current_profile.layer_1.scroll_up = base_action
+        elif combo.button == 'scrollDown':
+            self._profiles.current_profile.layer_1.scroll_down = base_action
+        elif combo.button == 'tiltWheelLeft':
+            self._profiles.current_profile.layer_1.tilt_wheel_left = base_action
+        elif combo.button == 'tiltWheelRight':
+            self._profiles.current_profile.layer_1.tilt_wheel_right = base_action
         self._profiles.current_profile.trigger()
         self._profiles.current_profile_edited()
         combo.update_action(base_action)
