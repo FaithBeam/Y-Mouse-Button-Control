@@ -14,15 +14,18 @@ key_table = {
     '&Caps Lock On': '{CAPSLOCKON}',
     '&Control': '{CTRL}',
     '&Delete': '{DEL}',
+    '&Down': '{DOWN}',
     '&End': '{END}',
     '&Escape': '{ESC}',
     '&Home': '{HOME}',
     '&Insert': '{INS}',
+    '&Left': '{LEFT}',
     '&Page Down': '{PGDN}',
     '&Page Up': '{PGUP}',
     '&Pause': '{PAUSE}',
     '&PrtScn': '{PRTSCN}',
     '&Return': '{RETURN}',
+    '&Right': '{RIGHT}',
     '&Right Alt (Alt Gr)': '{RALT}',
     '&Right Control': '{RCTRL}',
     '&Right Shift': '{RSHIFT}',
@@ -33,6 +36,7 @@ key_table = {
     '&Shift': '{SHIFT}',
     '&Space': '{SPACE}',
     '&Tab': '{TAB}',
+    '&Up': '{UP}',
     '&Windows Key': '{WIN}',
 }
 
@@ -100,6 +104,7 @@ class ModifierToolButton(QToolButton):
         self.setPopupMode(QToolButton.InstantPopup)
         self._create_modifier_keys_menu()
         self._create_standard_keys_menu()
+        self._create_direction_keys_menu()
 
     def _create_modifier_keys_menu(self):
         mk_control_action = QAction("&Control", self)
@@ -213,6 +218,27 @@ class ModifierToolButton(QToolButton):
         sk_base_action = QAction('&Standard Keys', self)
         sk_base_action.setMenu(sk_menu)
         self.addAction(sk_base_action)
+
+    def _create_direction_keys_menu(self):
+        up_action = QAction('&Up')
+        down_action = QAction('&Down')
+        left_action = QAction('&Left')
+        right_action = QAction('&Right')
+
+        up_action.triggered.connect(lambda x: self.on_action_triggered(up_action.text()))
+        down_action.triggered.connect(lambda x: self.on_action_triggered(down_action.text()))
+        left_action.triggered.connect(lambda x: self.on_action_triggered(left_action.text()))
+        right_action.triggered.connect(lambda x: self.on_action_triggered(right_action.text()))
+
+        menu = QMenu(self)
+        menu.addAction(up_action)
+        menu.addAction(down_action)
+        menu.addAction(left_action)
+        menu.addAction(right_action)
+
+        base_action = QAction('&Direction Keys', self)
+        base_action.setMenu(menu)
+        self.addAction(base_action)
 
     @Slot(object)
     def on_action_triggered(self, action_text: str):
