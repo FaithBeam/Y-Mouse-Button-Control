@@ -278,6 +278,31 @@ class StickyHoldActionType(ActionTypeInterface):
             self._state = False
 
 
+@ActionTypeFactory.register_subclass(9)
+class PressedAndReleasedActionType(ActionTypeInterface):
+    index = 9
+    description = f"{index} As mouse button is pressed & when released"
+    short_description = "pressed & released"
+    enabled = True
+
+    def __init__(self):
+        super().__init__()
+        self._keys = []
+
+    def run(self, pressed: bool, keys: str):
+        self._keys = parse_string(keys)
+        for k in self._keys:
+            if isinstance(k, str):
+                keyboard_controller.press(k)
+            if isinstance(k, Key):
+                keyboard_controller.press(k)
+            elif isinstance(k, Button):
+                mouse_controller.press(k)
+
+    def stop(self, keys):
+        pass
+
+
 modifier_table = {
     'ALT': Key.alt,
     'APPS': Key.menu,
