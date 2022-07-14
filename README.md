@@ -8,19 +8,20 @@ This is an attempt to clone the excellent [X-Mouse Button Control](https://www.h
 
 ## Requirements
 
-* At least Python 3.10
+* Python <3.11, >=3.6
 
 **Windows**
 
-* At least Windows 10 (QT6 doesn't support < Windows 10)
+* Windows 10 and newer
 
 **Linux**
 
 * X11 (Sorry, pynput doesn't support Wayland yet)
+* Ubuntu 20.04, CentOS 8.1, OpenSuSE 15.1 and newer
 
 **Mac**
 
-* ?
+* macOS 10.14 and newer
 
 ## Run from Source
 
