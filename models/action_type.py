@@ -334,6 +334,12 @@ modifier_table = {
     'F18': Key.f18,
     'F19': Key.f19,
     'F20': Key.f20,
+    'VOL+': Key.media_volume_up,
+    'VOL-': Key.media_volume_down,
+    'MUTE': Key.media_volume_mute,
+    'MEDIAPLAY': Key.media_play_pause,
+    'MEDIANEXT': Key.media_next,
+    'MEDIAPREV': Key.media_previous,
     'HOME': Key.home,
     'INS': Key.insert,
     'LEFT': Key.left,
@@ -355,7 +361,6 @@ modifier_table = {
     'UP': Key.up,
     'WIN': Key.cmd,
 }
-
 
 def get_modifier(key):
     return modifier_table.get(key)

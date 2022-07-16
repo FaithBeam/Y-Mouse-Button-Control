@@ -37,6 +37,13 @@ key_table = {
     '&F18': '{F18}',
     '&F19': '{F19}',
     '&F20': '{F20}',
+    '&Volume Up': '{VOL+}',
+    '&Volume Down': '{VOL-}',
+    '&Mute': '{MUTE}',
+    '&Play/Pause': '{MEDIAPLAY}',
+    '&Stop': '{MEDIASTOP}',
+    '&Next Track': '{MEDIANEXT}',
+    '&Previous Track': '{MEDIAPREV}',
     '&Home': '{HOME}',
     '&Insert': '{INS}',
     '&Left': '{LEFT}',
@@ -126,6 +133,7 @@ class ModifierToolButton(QToolButton):
         self._create_standard_keys_menu()
         self._create_direction_keys_menu()
         self._create_function_keys_menu()
+        self._create_media_keys_menu()
 
     def _create_modifier_keys_menu(self):
         mk_control_action = QAction("&Control", self)
@@ -324,6 +332,33 @@ class ModifierToolButton(QToolButton):
         menu.addAction(f19_action)
         menu.addAction(f20_action)
         base_action = QAction('&Function Keys', self)
+        base_action.setMenu(menu)
+        self.addAction(base_action)
+
+    def _create_media_keys_menu(self):
+        vol_up_action = QAction('&Volume Up')
+        vol_down_action = QAction('&Volume Down')
+        mute_action = QAction('&Mute')
+        play_pause_action = QAction('&Play/Pause')
+        stop_action = QAction('&Stop')
+        next_action = QAction('&Next Track')
+        previous_action = QAction('&Previous Track')
+        vol_up_action.triggered.connect(lambda x: self.on_action_triggered(vol_up_action.text()))
+        vol_down_action.triggered.connect(lambda x: self.on_action_triggered(vol_down_action.text()))
+        mute_action.triggered.connect(lambda x: self.on_action_triggered(mute_action.text()))
+        play_pause_action.triggered.connect(lambda x: self.on_action_triggered(play_pause_action.text()))
+        stop_action.triggered.connect(lambda x: self.on_action_triggered(stop_action.text()))
+        next_action.triggered.connect(lambda x: self.on_action_triggered(next_action.text()))
+        previous_action.triggered.connect(lambda x: self.on_action_triggered(previous_action.text()))
+        menu = QMenu(self)
+        menu.addAction(vol_up_action)
+        menu.addAction(vol_down_action)
+        menu.addAction(mute_action)
+        menu.addAction(play_pause_action)
+        menu.addAction(stop_action)
+        menu.addAction(next_action)
+        menu.addAction(previous_action)
+        base_action = QAction('&Media Keys', self)
         base_action.setMenu(menu)
         self.addAction(base_action)
 
