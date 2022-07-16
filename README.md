@@ -28,7 +28,7 @@ This is an attempt to clone the excellent [X-Mouse Button Control](https://www.h
 ```
 git clone https://github.com/FaithBeam/Y-Mouse-Button-Control
 cd Y-Mouse-Button-Control
-pip -r requirements.txt
+pip install -r requirements.txt
 python main.py
 ```
 
