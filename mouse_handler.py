@@ -36,6 +36,6 @@ class MouseHandler(QObject):
         elif dy == -1:
             self.on_scroll_down.emit(True)
         elif dx == 1:
-            self.on_tilt_wheel_left.emit(True)
-        elif dx == -1:
             self.on_tilt_wheel_right.emit(True)
+        elif dx == -1:
+            self.on_tilt_wheel_left.emit(True)
