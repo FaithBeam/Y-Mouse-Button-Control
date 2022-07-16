@@ -17,6 +17,26 @@ key_table = {
     '&Down': '{DOWN}',
     '&End': '{END}',
     '&Escape': '{ESC}',
+    '&F1': '{F1}',
+    '&F2': '{F2}',
+    '&F3': '{F3}',
+    '&F4': '{F4}',
+    '&F5': '{F5}',
+    '&F6': '{F6}',
+    '&F7': '{F7}',
+    '&F8': '{F8}',
+    '&F9': '{F9}',
+    '&F10': '{F10}',
+    '&F11': '{F11}',
+    '&F12': '{F12}',
+    '&F13': '{F13}',
+    '&F14': '{F14}',
+    '&F15': '{F15}',
+    '&F16': '{F16}',
+    '&F17': '{F17}',
+    '&F18': '{F18}',
+    '&F19': '{F19}',
+    '&F20': '{F20}',
     '&Home': '{HOME}',
     '&Insert': '{INS}',
     '&Left': '{LEFT}',
@@ -105,6 +125,7 @@ class ModifierToolButton(QToolButton):
         self._create_modifier_keys_menu()
         self._create_standard_keys_menu()
         self._create_direction_keys_menu()
+        self._create_function_keys_menu()
 
     def _create_modifier_keys_menu(self):
         mk_control_action = QAction("&Control", self)
@@ -239,6 +260,73 @@ class ModifierToolButton(QToolButton):
         base_action = QAction('&Direction Keys', self)
         base_action.setMenu(menu)
         self.addAction(base_action)
+
+    def _create_function_keys_menu(self):
+        f1_action = QAction('&F1')
+        f2_action = QAction('&F2')
+        f3_action = QAction('&F3')
+        f4_action = QAction('&F4')
+        f5_action = QAction('&F5')
+        f6_action = QAction('&F6')
+        f7_action = QAction('&F7')
+        f8_action = QAction('&F8')
+        f9_action = QAction('&F9')
+        f10_action = QAction('&F10')
+        f11_action = QAction('&F11')
+        f12_action = QAction('&F12')
+        f13_action = QAction('&F13')
+        f14_action = QAction('&F14')
+        f15_action = QAction('&F15')
+        f16_action = QAction('&F16')
+        f17_action = QAction('&F17')
+        f18_action = QAction('&F18')
+        f19_action = QAction('&F19')
+        f20_action = QAction('&F20')
+        f1_action.triggered.connect(lambda x: self.on_action_triggered(f1_action.text()))
+        f2_action.triggered.connect(lambda x: self.on_action_triggered(f2_action.text()))
+        f3_action.triggered.connect(lambda x: self.on_action_triggered(f3_action.text()))
+        f4_action.triggered.connect(lambda x: self.on_action_triggered(f4_action.text()))
+        f5_action.triggered.connect(lambda x: self.on_action_triggered(f5_action.text()))
+        f6_action.triggered.connect(lambda x: self.on_action_triggered(f6_action.text()))
+        f7_action.triggered.connect(lambda x: self.on_action_triggered(f7_action.text()))
+        f8_action.triggered.connect(lambda x: self.on_action_triggered(f8_action.text()))
+        f9_action.triggered.connect(lambda x: self.on_action_triggered(f9_action.text()))
+        f10_action.triggered.connect(lambda x: self.on_action_triggered(f10_action.text()))
+        f11_action.triggered.connect(lambda x: self.on_action_triggered(f11_action.text()))
+        f12_action.triggered.connect(lambda x: self.on_action_triggered(f12_action.text()))
+        f13_action.triggered.connect(lambda x: self.on_action_triggered(f13_action.text()))
+        f14_action.triggered.connect(lambda x: self.on_action_triggered(f14_action.text()))
+        f15_action.triggered.connect(lambda x: self.on_action_triggered(f15_action.text()))
+        f16_action.triggered.connect(lambda x: self.on_action_triggered(f16_action.text()))
+        f17_action.triggered.connect(lambda x: self.on_action_triggered(f17_action.text()))
+        f18_action.triggered.connect(lambda x: self.on_action_triggered(f18_action.text()))
+        f19_action.triggered.connect(lambda x: self.on_action_triggered(f19_action.text()))
+        f20_action.triggered.connect(lambda x: self.on_action_triggered(f20_action.text()))
+        menu = QMenu(self)
+        menu.addAction(f1_action)
+        menu.addAction(f2_action)
+        menu.addAction(f3_action)
+        menu.addAction(f4_action)
+        menu.addAction(f5_action)
+        menu.addAction(f6_action)
+        menu.addAction(f7_action)
+        menu.addAction(f8_action)
+        menu.addAction(f9_action)
+        menu.addAction(f10_action)
+        menu.addAction(f11_action)
+        menu.addAction(f12_action)
+        menu.addAction(f13_action)
+        menu.addAction(f14_action)
+        menu.addAction(f15_action)
+        menu.addAction(f16_action)
+        menu.addAction(f17_action)
+        menu.addAction(f18_action)
+        menu.addAction(f19_action)
+        menu.addAction(f20_action)
+        base_action = QAction('&Function Keys', self)
+        base_action.setMenu(menu)
+        self.addAction(base_action)
+
 
     @Slot(object)
     def on_action_triggered(self, action_text: str):

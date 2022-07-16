@@ -6,5 +6,5 @@ keyboard_controller = KeyboardController()
 mouse_controller = MouseController()
 mouse_handler = MouseHandler()
 app_name = "Y-Mouse Button Control"
-app_version = "v0.5.0"
+app_version = "v0.6.0"
 app_author = "FaithBeam"
