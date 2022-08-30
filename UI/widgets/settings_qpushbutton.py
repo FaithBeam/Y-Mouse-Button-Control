@@ -1,6 +1,6 @@
 from PySide6.QtWidgets import QPushButton
 from PySide6.QtCore import QSize
-from widgets.mouse_button_combobox import MouseButtonComboBox
+from UI.widgets.mouse_button_combobox import MouseButtonComboBox
 
 
 class SettingsButton(QPushButton):

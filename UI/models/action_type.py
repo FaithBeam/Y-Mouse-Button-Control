@@ -351,7 +351,11 @@ modifier_table = {
     'RIGHT': Key.right,
     'RALT': Key.alt_r,
     'RCTRL': Key.ctrl_r,
+    'LMB': Button.left,
     'RMB': Button.right,
+    'MMB': Button.middle,
+    'MB4': Button.x1,
+    'MB5': Button.x2,
     'RSHIFT': Key.shift_r,
     'RWIN': Key.cmd_r,
     'SCROLLLOCK': Key.scroll_lock,
@@ -361,6 +365,7 @@ modifier_table = {
     'UP': Key.up,
     'WIN': Key.cmd,
 }
+
 
 def get_modifier(key):
     return modifier_table.get(key)

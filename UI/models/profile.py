@@ -2,8 +2,8 @@ from typing import Optional
 
 from PySide6.QtCore import QObject, Signal
 
-from models.mapping_commands import MappingInterface
-from models.layer import Layer
+from UI.models.mapping_commands import MappingInterface
+from UI.models.layer import Layer
 
 
 class Profile(QObject):

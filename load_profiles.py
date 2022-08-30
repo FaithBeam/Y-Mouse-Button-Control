@@ -1,9 +1,9 @@
 import json
 
-from models.mapping_commands import MappingFactory
-from models.action_type import ActionTypeFactory
-from models.layer import Layer
-from models.profile import Profiles, Profile
+from UI.models.mapping_commands import MappingFactory
+from UI.models.action_type import ActionTypeFactory
+from UI.models.layer import Layer
+from UI.models.profile import Profiles, Profile
 
 
 def get_profiles(path) -> Profiles:

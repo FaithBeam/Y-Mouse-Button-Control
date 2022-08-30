@@ -7,11 +7,11 @@ from PySide6.QtGui import QIcon, QAction
 from PySide6.QtWidgets import QMainWindow, QVBoxLayout, QWidget, QHBoxLayout, QSystemTrayIcon, QMenu, QApplication, \
     QPushButton, QLabel
 
-from controllers.main_view_controller import MainViewController
-from models.profile import Profiles
-from widgets.layers_tab_widget import LayersTabWidget
-from widgets.profile_information_widget import ProfileInformationWidget
-from widgets.profiles_list_widget import ProfilesListWidget
+from UI.controllers.main_view_controller import MainViewController
+from UI.models.profile import Profiles
+from UI.widgets.layers_tab_widget import LayersTabWidget
+from UI.widgets.profile_information_widget import ProfileInformationWidget
+from UI.widgets.profiles_list_widget import ProfilesListWidget
 from globals import app_name, app_version
 
 

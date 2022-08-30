@@ -1,9 +1,9 @@
 from PySide6.QtCore import Slot
-from dialogs.some_dialog import SomeDialog
-from models.mapping_commands import MappingFactory, MappingInterface
-from models.action_type import ActionTypeFactory
-from models.profile import Profiles
-from widgets.mouse_button_combobox import MouseButtonComboBox
+from UI.dialogs.some_dialog import SomeDialog
+from UI.models.mapping_commands import MappingFactory, MappingInterface
+from UI.models.action_type import ActionTypeFactory
+from UI.models.profile import Profiles
+from UI.widgets.mouse_button_combobox import MouseButtonComboBox
 
 
 class LayersTabWidgetController:

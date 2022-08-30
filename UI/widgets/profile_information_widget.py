@@ -1,6 +1,6 @@
 from PySide6.QtCore import Slot
 from PySide6.QtWidgets import QWidget, QGroupBox, QLabel, QGridLayout, QVBoxLayout
-from models.profile import Profiles
+from UI.models.profile import Profiles
 
 
 class ProfileInformationWidget(QWidget):

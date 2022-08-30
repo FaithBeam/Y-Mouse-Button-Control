@@ -2,7 +2,7 @@ from PySide6.QtCore import Qt, Slot
 from PySide6.QtGui import QIcon, QAction
 from PySide6.QtWidgets import QDialog, QDialogButtonBox, QLabel, QLineEdit, QVBoxLayout, QComboBox, QHBoxLayout, \
     QToolButton, QMenu
-from models.action_type import ActionTypeFactory
+from UI.models.action_type import ActionTypeFactory
 
 key_table = {
     '&Alt': '{ALT}',
@@ -44,6 +44,15 @@ key_table = {
     '&Stop': '{MEDIASTOP}',
     '&Next Track': '{MEDIANEXT}',
     '&Previous Track': '{MEDIAPREV}',
+    '&Left Button': '{LMB}',
+    '&Right Button': '{RMB}',
+    '&Middle Button': '{MMB}',
+    '&4th Button': '{MB4}',
+    '&5th Button': '{MB5}',
+    '&Wheel Up': '{MWUP}',
+    '&Wheel Down': '{MWDN}',
+    '&Wheel Tilt Left': '{TILTL}',
+    '&Wheel Tilt Right': '{TILTR}',
     '&Home': '{HOME}',
     '&Insert': '{INS}',
     '&Left': '{LEFT}',
@@ -361,6 +370,43 @@ class ModifierToolButton(QToolButton):
         base_action = QAction('&Media Keys', self)
         base_action.setMenu(menu)
         self.addAction(base_action)
+
+    def _create_mouse_buttons_menu(self):
+        lmb_act = QAction('&Left Button')
+        rmb_act = QAction('&Right Button')
+        mmb_act = QAction('&Middle Button')
+        mb4_act = QAction('&4th Button')
+        mb5_act = QAction('&5th Button')
+        mwup_act = QAction('&Wheel Up')
+        mwdown_act = QAction('&Wheel Down')
+        tiltl_act = QAction('&Wheel Tilt Left')
+        tiltr_act = QAction('&Wheel Tilt Right')
+        self._connect_action(lmb_act)
+        self._connect_action(rmb_act)
+        self._connect_action(mmb_act)
+        self._connect_action(mb4_act)
+        self._connect_action(mb5_act)
+        self._connect_action(mwup_act)
+        self._connect_action(mwdown_act)
+        self._connect_action(tiltl_act)
+        self._connect_action(tiltr_act)
+        menu = QMenu(self)
+        menu.addAction(lmb_act)
+        menu.addAction(rmb_act)
+        menu.addAction(mmb_act)
+        menu.addAction(mb4_act)
+        menu.addAction(mb5_act)
+        menu.addAction(mwup_act)
+        menu.addAction(mwdown_act)
+        menu.addAction(tiltl_act)
+        menu.addAction(tiltr_act)
+        base_action = QAction('&Mouse Buttons', self)
+        base_action.setMenu(menu)
+        self.addAction(base_action)
+
+
+    def _connect_action(self, action):
+        action.triggered.connect(lambda x: self.on_action_triggered(action.text()))
 
 
     @Slot(object)

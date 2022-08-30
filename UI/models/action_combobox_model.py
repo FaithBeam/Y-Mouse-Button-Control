@@ -1,7 +1,7 @@
 from typing import Union, Any
 from PySide6.QtCore import QAbstractListModel, QModelIndex, Qt, QPersistentModelIndex
 
-from models.mapping_commands import MappingFactory
+from UI.models.mapping_commands import MappingFactory
 
 
 class ActionComboBoxModel(QAbstractListModel):

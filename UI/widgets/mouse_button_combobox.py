@@ -1,8 +1,8 @@
 from typing import Optional, Tuple
 from PySide6.QtCore import Slot, Qt, QTimer
 from PySide6.QtWidgets import QComboBox
-from models.mapping_commands import MappingInterface
-from models.action_combobox_model import ActionComboBoxModel
+from UI.models.mapping_commands import MappingInterface
+from UI.models.action_combobox_model import ActionComboBoxModel
 
 
 class MouseButtonComboBox(QComboBox):

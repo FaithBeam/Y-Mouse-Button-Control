@@ -5,10 +5,10 @@ from PySide6.QtCore import Slot
 from PySide6.QtGui import QPixmap, QIcon
 from PySide6.QtWidgets import QVBoxLayout, QTabWidget, QWidget, QLabel, QGridLayout
 
-from controllers.layers_tab_widget_controller import LayersTabWidgetController
-from models.profile import Profile, Profiles
-from widgets.mouse_button_combobox import MouseButtonComboBox
-from widgets.settings_qpushbutton import SettingsButton
+from UI.controllers.layers_tab_widget_controller import LayersTabWidgetController
+from UI.models.profile import Profile, Profiles
+from UI.widgets.mouse_button_combobox import MouseButtonComboBox
+from UI.widgets.settings_qpushbutton import SettingsButton
 from globals import mouse_handler
 
 
