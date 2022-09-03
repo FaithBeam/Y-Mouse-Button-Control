@@ -45,9 +45,9 @@ class LayersTabWidget(QWidget):
 
         gear_icon_path = ""
         if getattr(sys, 'frozen', False):
-            gear_icon_path = file = os.path.join(sys._MEIPASS, "resources/gear_icon.png")
+            gear_icon_path = file = os.path.join(sys._MEIPASS, "UI/resources/gear_icon.png")
         else:
-            gear_icon_path = file = "resources/gear_icon.png"
+            gear_icon_path = file = "UI/resources/gear_icon.png"
         gear_icon_pixmap = QPixmap(gear_icon_path)
         gear_icon = QIcon(gear_icon_pixmap)
 
