@@ -1,5 +1,5 @@
 from mouse_handler import MouseHandler
-from models.profile import Profiles
+from UI.models.profile import Profiles
 
 
 class DoThing:

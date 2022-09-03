@@ -1,4 +1,4 @@
-from models.profile import Profiles
+from UI.models.profile import Profiles
 from profile import Profile
 from typing import Union, Any
 

@@ -1,8 +1,8 @@
 from PySide6.QtCore import Slot, QObject, Qt
 from PySide6.QtWidgets import QListView
-from dialogs.process_picker_dialog import ProcessPickerDialog
-from models.profile import Profile, Profiles
-from models.profiles_list_model import ProfilesListModel
+from UI.dialogs.process_picker_dialog import ProcessPickerDialog
+from UI.models.profile import Profile, Profiles
+from UI.models.profiles_list_model import ProfilesListModel
 
 
 class ProfilesListWidgetController(QObject):

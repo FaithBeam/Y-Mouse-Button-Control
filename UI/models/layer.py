@@ -2,7 +2,7 @@ from typing import Optional
 
 from PySide6.QtCore import Signal, QObject
 
-from models.mapping_commands import MappingInterface, NothingMapping
+from UI.models.mapping_commands import MappingInterface, NothingMapping
 
 
 class Layer(QObject):

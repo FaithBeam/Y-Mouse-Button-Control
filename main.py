@@ -7,7 +7,7 @@ from config import Config
 from do_thing import DoThing
 from process_monitor import ProcessMonitor
 from load_profiles import get_profiles
-from views.main_view import MainView
+from UI.views.main_view import MainView
 from globals import mouse_handler
 
 

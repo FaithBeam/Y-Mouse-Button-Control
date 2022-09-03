@@ -3,7 +3,7 @@ from PySide6.QtCore import Slot
 from PySide6.QtWidgets import QMainWindow, QFileDialog
 
 from globals import app_name
-from models.profile import Profiles
+from UI.models.profile import Profiles
 
 
 class MainViewController:

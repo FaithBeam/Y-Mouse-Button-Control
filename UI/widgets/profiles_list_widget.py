@@ -8,9 +8,9 @@ from PySide6.QtWidgets import (
     QHBoxLayout,
     QGridLayout,
 )
-from controllers.profiles_list_widget_controller import ProfilesListWidgetController
-from models.profile import Profiles
-from models.profiles_list_model import ProfilesListModel
+from UI.controllers.profiles_list_widget_controller import ProfilesListWidgetController
+from UI.models.profile import Profiles
+from UI.models.profiles_list_model import ProfilesListModel
 
 
 class ProfilesListWidget(QWidget):

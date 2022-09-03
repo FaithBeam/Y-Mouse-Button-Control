@@ -2,7 +2,7 @@ from PySide6.QtCore import Qt, Slot
 from PySide6.QtGui import QIcon, QAction
 from PySide6.QtWidgets import QDialog, QDialogButtonBox, QLabel, QLineEdit, QVBoxLayout, QComboBox, QHBoxLayout, \
     QToolButton, QMenu
-from models.action_type import ActionTypeFactory
+from UI.models.action_type import ActionTypeFactory
 
 key_table = {
     '&Alt': '{ALT}',
