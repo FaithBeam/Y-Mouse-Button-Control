@@ -140,26 +140,3 @@ class Layer(QObject):
         self._tilt_wheel_left = tilt_wheel_left
         self._tilt_wheel_right = tilt_wheel_right
 
-    def do_click(self, pressed: bool, button: str):
-        if button == 'lmb':
-            self._try_run(pressed, self._left_mouse_button)
-        elif button == 'rmb':
-            self._try_run(pressed, self._right_mouse_button)
-        elif button == 'mmb':
-            self._try_run(pressed, self._middle_mouse_button)
-        elif button == 'mb4':
-            self._try_run(pressed, self._mouse_button_4)
-        elif button == 'mb5':
-            self._try_run(pressed, self._mouse_button_5)
-        elif button == 'scroll_up':
-            self._try_run(pressed, self._scroll_up)
-        elif button == 'scroll_down':
-            self._try_run(pressed, self._scroll_down)
-        elif button == 'tilt_left':
-            self._try_run(pressed, self._tilt_wheel_left)
-        elif button == 'tilt_right':
-            self._try_run(pressed, self._tilt_wheel_right)
-
-    def _try_run(self, pressed, mapping):
-        if mapping is not None and not isinstance(mapping, NothingMapping):
-            mapping.run(pressed)

@@ -1,3 +1,4 @@
+from UI.models.mapping_commands import NothingMapping
 from mkb.mouse_handler import MouseHandler
 from UI.models.profile import Profiles
 
@@ -23,4 +24,25 @@ class MKBController:
             if p.checked_value == 2:
                 with self._mutex:
                     if p.process == "*" or [x for x in self._running_processes if p.process in x]:
-                        p.layer_1.do_click(pressed, button)
+                        if button == 'lmb':
+                            self._try_run(pressed, p.layer_1.left_mouse_button)
+                        elif button == 'rmb':
+                            self._try_run(pressed, p.layer_1.right_mouse_button)
+                        elif button == 'mmb':
+                            self._try_run(pressed, p.layer_1.middle_mouse_button)
+                        elif button == 'mb4':
+                            self._try_run(pressed, p.layer_1.mouse_button_4)
+                        elif button == 'mb5':
+                            self._try_run(pressed, p.layer_1.mouse_button_5)
+                        elif button == 'scroll_up':
+                            self._try_run(pressed, p.layer_1.scroll_up)
+                        elif button == 'scroll_down':
+                            self._try_run(pressed, p.layer_1.scroll_down)
+                        elif button == 'tilt_left':
+                            self._try_run(pressed, p.layer_1.tilt_wheel_left)
+                        elif button == 'tilt_right':
+                            self._try_run(pressed, p.layer_1.tilt_wheel_right)
+
+    def _try_run(self, pressed, mapping):
+        if mapping is not None and not isinstance(mapping, NothingMapping):
+            mapping.run(pressed)
