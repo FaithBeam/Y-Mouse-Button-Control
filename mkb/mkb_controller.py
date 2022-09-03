@@ -1,4 +1,4 @@
-from UI.models.mapping_commands import NothingMapping
+from UI.models.mapping_commands import NothingMapping, DisabledMapping, MappingInterface
 from mkb.mouse_handler import MouseHandler
 from UI.models.profile import Profiles
 
@@ -43,6 +43,6 @@ class MKBController:
                         elif button == 'tilt_right':
                             self._try_run(pressed, p.layer_1.tilt_wheel_right)
 
-    def _try_run(self, pressed, mapping):
-        if mapping is not None and not isinstance(mapping, NothingMapping):
+    def _try_run(self, pressed, mapping: MappingInterface):
+        if mapping is not None:
             mapping.run(pressed)

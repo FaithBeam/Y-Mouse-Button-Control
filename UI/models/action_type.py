@@ -1,6 +1,5 @@
 import sys
 from abc import ABC, abstractmethod
-from sys import platform
 from threading import Thread
 from time import sleep
 
