@@ -1,8 +1,8 @@
-from mouse_handler import MouseHandler
+from mkb.mouse_handler import MouseHandler
 from UI.models.profile import Profiles
 
 
-class DoThing:
+class MKBController:
     def __init__(self, mouse_handler: MouseHandler, profiles: Profiles, mutex, running_processes):
         self._mouse_handler = mouse_handler
         self._profiles = profiles
