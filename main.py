@@ -4,7 +4,7 @@ import multiprocessing
 from PySide6.QtWidgets import QApplication, QStyleFactory
 
 from config import Config
-from do_thing import DoThing
+from mkb.mkb_controller import MKBController
 from process_monitor import ProcessMonitor
 from load_profiles import get_profiles
 from UI.views.main_view import MainView
@@ -20,7 +20,7 @@ class App(QApplication):
         ProcessMonitor(self._mutex, self._running_processes)
         self._profiles = get_profiles(app_config.profile_location)
         self._profiles.current_profile = self._profiles.profiles[0]
-        DoThing(mouse_handler, self._profiles, self._mutex, self._running_processes)
+        MKBController(mouse_handler, self._profiles, self._mutex, self._running_processes)
         self.main_view = MainView(app_config, self._profiles)
         self.setQuitOnLastWindowClosed(False)
         self.setStyle(QStyleFactory.create('Fusion'))

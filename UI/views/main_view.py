@@ -69,9 +69,9 @@ class MainView(QMainWindow):
 
     def create_tray(self):
         if getattr(sys, 'frozen', False):
-            icon_path = file = os.path.join(sys._MEIPASS, "resources/mouse.png")
+            icon_path = file = os.path.join(sys._MEIPASS, "UI/resources/mouse.png")
         else:
-            icon_path = file = "resources/mouse.png"
+            icon_path = file = "UI/resources/mouse.png"
         icon = QIcon(icon_path)
         self.tray = QSystemTrayIcon(parent=self)
         self.tray.setIcon(icon)

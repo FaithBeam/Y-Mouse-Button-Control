@@ -1,4 +1,6 @@
+import sys
 from abc import ABC, abstractmethod
+from sys import platform
 from threading import Thread
 from time import sleep
 
@@ -305,9 +307,7 @@ class PressedAndReleasedActionType(ActionTypeInterface):
 
 modifier_table = {
     'ALT': Key.alt,
-    'APPS': Key.menu,
     'BACKSPACE': Key.backspace,
-    'BREAK': Key.pause,
     'CAPSLOCK': Key.caps_lock,
     'CTRL': Key.ctrl,
     'DEL': Key.delete,
@@ -341,30 +341,31 @@ modifier_table = {
     'MEDIANEXT': Key.media_next,
     'MEDIAPREV': Key.media_previous,
     'HOME': Key.home,
-    'INS': Key.insert,
     'LEFT': Key.left,
     'PGDN': Key.page_down,
     'PGUP': Key.page_up,
-    'PAUSE': Key.pause,
-    'PRTSCN': Key.print_screen,
     'RETURN': Key.enter,
     'RIGHT': Key.right,
     'RALT': Key.alt_r,
     'RCTRL': Key.ctrl_r,
-    'LMB': Button.left,
     'RMB': Button.right,
-    'MMB': Button.middle,
-    'MB4': Button.x1,
-    'MB5': Button.x2,
     'RSHIFT': Key.shift_r,
     'RWIN': Key.cmd_r,
-    'SCROLLLOCK': Key.scroll_lock,
     'SHIFT': Key.shift,
     'SPACE': Key.space,
     'TAB': Key.tab,
     'UP': Key.up,
     'WIN': Key.cmd,
 }
+
+# These keys do not exist in macOS
+if not sys.platform.startswith('darwin'):
+    modifier_table['APPS'] = Key.menu
+    modifier_table['BREAK'] = Key.pause
+    modifier_table['INS'] = Key.insert
+    modifier_table['PAUSE'] = Key.pause
+    modifier_table['PRTSCN'] = Key.print_screen
+    modifier_table['SCROLLLOCK'] = Key.scroll_lock
 
 
 def get_modifier(key):
