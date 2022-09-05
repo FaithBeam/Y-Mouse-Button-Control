@@ -32,7 +32,7 @@ pip install -r requirements.txt
 python main.py
 ```
 
-## Gotchas
+## Limitations
 
 * No blocking original mouse input
 * Unable to recognize if a window is visible (It can tell if it is running right now)
