@@ -1,3 +1,5 @@
+**This program has been archived in favor of https://github.com/FaithBeam/YMouseButtonControl**
+
 # Y-Mouse Button Control
 
 *This is alpha software. There will be bugs and things will not behave like you expect them to.*
